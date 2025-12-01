@@ -2,7 +2,18 @@
 
 import Link from "next/link";
 import Slider from "@/components/Slider";
+import CategoryCard from "@/components/CategoryCard";
 import styles from "./page.module.css";
+
+const categories = [
+	{
+		id: 2,
+		title: "Fashion",
+		image:
+			"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80",
+		link: "/category/fashion",
+	},
+];
 
 export default function Home() {
 	return (
@@ -15,71 +26,15 @@ export default function Home() {
 			{/* Shop by Category Section */}
 			<section className={styles.categoriesSection}>
 				<div className={styles.container}>
-					<h2 className={styles.sectionTitle}>Shop by Category</h2>
 					<div className={styles.categoriesGrid}>
-						<Link href="/" className={styles.categoryCard}>
-							<div className={styles.categoryImage}>
-								<svg
-									width="80"
-									height="80"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-								>
-									<rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-									<path d="M2 17h20"></path>
-								</svg>
-							</div>
-							<h3 className={styles.categoryName}>Electronics</h3>
-						</Link>
-
-						<Link href="/" className={styles.categoryCard}>
-							<div className={styles.categoryImage}>
-								<svg
-									width="80"
-									height="80"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-								>
-									<path d="M6 4h12v12H6z"></path>
-									<path d="M8 16h8"></path>
-								</svg>
-							</div>
-							<h3 className={styles.categoryName}>Fashion</h3>
-						</Link>
-
-						<Link href="/" className={styles.categoryCard}>
-							<div className={styles.categoryImage}>
-								<svg
-									width="80"
-									height="80"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-								>
-									<circle cx="9" cy="21" r="1"></circle>
-									<circle cx="20" cy="21" r="1"></circle>
-									<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-								</svg>
-							</div>
-							<h3 className={styles.categoryName}>Appliances</h3>
-						</Link>
-
-						<Link href="/" className={styles.categoryCard}>
-							<div className={styles.categoryImage}>
-								<svg
-									width="80"
-									height="80"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-								>
-									<path d="M12 2L15.09 8.26H22L17.45 12.88L19.54 19.74L12 15.12L4.46 19.74L6.55 12.88L2 8.26H8.91L12 2Z"></path>
-								</svg>
-							</div>
-							<h3 className={styles.categoryName}>Babies Store</h3>
-						</Link>
+						{categories.map((category) => (
+							<CategoryCard
+								key={category.id}
+								image={category.image}
+								title={category.title}
+								link={category.link}
+							/>
+						))}
 					</div>
 				</div>
 			</section>
