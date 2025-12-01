@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Slider from "@/components/Slider";
 import CategoryCard from "@/components/CategoryCard";
+import ProductCard from "@/components/ProductCard";
 import styles from "./page.module.css";
 
 const categories = [
@@ -12,6 +13,63 @@ const categories = [
 		image:
 			"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80",
 		link: "/category/fashion",
+	},
+];
+
+const products = [
+	{
+		id: 1,
+		brand: "Samsung",
+		title: "Samsung Automatic Washing Machine",
+		image:
+			"https://images.unsplash.com/photo-1517668808822-9ebb02ae2a0e?w=300&q=80",
+		originalPrice: "₨ 110,000",
+		salePrice: "₨ 101,000",
+	},
+	{
+		id: 2,
+		brand: "LG",
+		title: "LG Front Load Washing Machine",
+		image:
+			"https://images.unsplash.com/photo-1517668808822-9ebb02ae2a0e?w=300&q=80",
+		originalPrice: "₨ 95,000",
+		salePrice: "₨ 85,000",
+	},
+	{
+		id: 3,
+		brand: "Haier",
+		title: "Haier Fully Automatic Washer",
+		image:
+			"https://images.unsplash.com/photo-1517668808822-9ebb02ae2a0e?w=300&q=80",
+		originalPrice: "₨ 75,000",
+		salePrice: "₨ 68,000",
+	},
+	{
+		id: 4,
+		brand: "Dawlance",
+		title: "Dawlance Top Load Washing",
+		image:
+			"https://images.unsplash.com/photo-1517668808822-9ebb02ae2a0e?w=300&q=80",
+		originalPrice: "₨ 55,000",
+		salePrice: "₨ 48,000",
+	},
+	{
+		id: 5,
+		brand: "Whirlpool",
+		title: "Whirlpool Semi Automatic",
+		image:
+			"https://images.unsplash.com/photo-1517668808822-9ebb02ae2a0e?w=300&q=80",
+		originalPrice: "₨ 45,000",
+		salePrice: "₨ 38,000",
+	},
+	{
+		id: 6,
+		brand: "Electrolux",
+		title: "Electrolux Inverter Washer",
+		image:
+			"https://images.unsplash.com/photo-1517668808822-9ebb02ae2a0e?w=300&q=80",
+		originalPrice: "₨ 120,000",
+		salePrice: "₨ 108,000",
 	},
 ];
 
@@ -44,37 +102,18 @@ export default function Home() {
 				<div className={styles.container}>
 					<h2 className={styles.sectionTitle}>New Arrivals</h2>
 					<div className={styles.productsGrid}>
-						{[1, 2, 3, 4, 5, 6].map((product) => (
-							<Link href="/" key={product} className={styles.productCard}>
-								<div className={styles.productImage}>
-									<svg
-										width="120"
-										height="120"
-										viewBox="0 0 24 24"
-										fill="none"
-										stroke="currentColor"
-									>
-										<rect
-											x="2"
-											y="3"
-											width="20"
-											height="14"
-											rx="2"
-											ry="2"
-										></rect>
-										<path d="M2 17h20"></path>
-									</svg>
-								</div>
-								<div className={styles.productInfo}>
-									<h3 className={styles.productName}>Product {product}</h3>
-									<p className={styles.productBrand}>Brand Name</p>
-									<div className={styles.productPrice}>
-										<span className={styles.originalPrice}>₨ 50,000</span>
-										<span className={styles.salePrice}>₨ 35,000</span>
-									</div>
-									<button className={styles.addToCart}>Add to cart</button>
-								</div>
-							</Link>
+						{products.map((product) => (
+							<ProductCard
+								key={product.id}
+								image={product.image}
+								brand={product.brand}
+								title={product.title}
+								originalPrice={product.originalPrice}
+								salePrice={product.salePrice}
+								onAddToCart={() =>
+									console.log(`Added ${product.title} to cart`)
+								}
+							/>
 						))}
 					</div>
 				</div>
